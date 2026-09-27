@@ -6,12 +6,15 @@ interface ActionButtonProps {
     name: string
     icon?: React.ReactNode
     onClick: () => void
+    disabled?: boolean
 }
 
 export default function ActionButton({
     name,
     icon,
-    onClick
+    onClick,
+    disabled
+
 }: ActionButtonProps) {
     return (
         <div className="relative inline-flex group">
@@ -19,6 +22,7 @@ export default function ActionButton({
                 type="button"
                 aria-label={name}
                 onClick={onClick}
+                disabled={disabled}
                 className="
                     inline-flex items-center gap-2
                     rounded-md px-2.5 py-1.5

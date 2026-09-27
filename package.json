@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@farscrl/tiptap-extension-spellchecker": "^2.0.2",
     "@tiptap/extensions": "^3.31.3",
     "@tiptap/pm": "^3.31.3",
     "@tiptap/react": "^3.31.3",

@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import type { Editor } from '@tiptap/core'
 import { useEditorState } from '@tiptap/react'
-import { Bold, Printer, Redo, Undo } from 'lucide-react'
+import { Bold, Paintbrush, Paintbrush2, PaintRoller, Pipette, Printer, Redo, SpellCheckIcon, Undo } from 'lucide-react'
 
 import { menuBarStateSelector } from '@/app/state/menustate'
 import ToggleButton from '../ui/ToggleButton'
 import MenuSearch from '../ui/MenuSearch'
 import Icon from '../ui/Icon'
 import ActionButton from '../ui/ActionButton'
-export default function MenuBar({ editor }: { editor: Editor | null }) {
+
+
+interface MenuBarProps {
+    editor: Editor | null;
+    onPaintFormat: () => void;
+    isPainting?: boolean;
+}
+
+export default function MenuBar({ editor, onPaintFormat, isPainting }: MenuBarProps) {
     const editorState = useEditorState({
         editor,
         selector: menuBarStateSelector,
@@ -56,6 +64,21 @@ export default function MenuBar({ editor }: { editor: Editor | null }) {
                         }
                         }
                     />
+                    {/* Spelling and grammar Check Action Button */}
+                    <ActionButton
+                        icon={<Icon icon={<SpellCheckIcon />} />}
+                        name={'Spelling and grammar Check (Ctrl+Alt+X)'}
+                        onClick={() => editor?.commands.checkSpelling()}
+                    />
+
+                    {/* Paint Format Action Button */}
+                    <ToggleButton
+                        icon={<Icon icon={<PaintRoller />} />}
+                        name={'Paint Format'}
+                        isToggleOn={isPainting ?? false}
+                        onClick={onPaintFormat}
+                    />
+
                     {/* Bold toggle Button */}
                     <ToggleButton
                         isToggleOn={editorState.isBold}
