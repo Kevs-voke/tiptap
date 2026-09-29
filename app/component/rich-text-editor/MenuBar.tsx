@@ -8,6 +8,7 @@ import ToggleButton from '../ui/ToggleButton'
 import MenuSearch from '../ui/MenuSearch'
 import Icon from '../ui/Icon'
 import ActionButton from '../ui/ActionButton'
+import Zoom from '../ui/Zoom'
 
 
 interface MenuBarProps {
@@ -78,6 +79,7 @@ export default function MenuBar({ editor, onPaintFormat, isPainting }: MenuBarPr
                         isToggleOn={isPainting ?? false}
                         onClick={onPaintFormat}
                     />
+                    <Zoom />
 
                     {/* Bold toggle Button */}
                     <ToggleButton

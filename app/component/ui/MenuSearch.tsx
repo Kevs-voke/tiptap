@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Search } from "lucide-react";
+import Tooltip from './Tooltip';
 function MenuSearch({ onExpandChange }: { onExpandChange?: (expanded: boolean) => void }) {
     const [type, setType] = useState<'text' | 'search'>('text');
     const [menusOn, setMenusOn] = useState(false);
@@ -56,12 +57,8 @@ function MenuSearch({ onExpandChange }: { onExpandChange?: (expanded: boolean) =
             </div>
 
             {!menusOn && (
-                <span
-                    role="tooltip"
-                    className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs font-normal text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-                >
-                    Menus (Alt+/)
-                </span>
+                <Tooltip name='Menu (Alt+/)' />
+
             )}
         </div>
     )

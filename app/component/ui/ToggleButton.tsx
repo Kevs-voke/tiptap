@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Tooltip from './Tooltip'
 
 interface ToggleButtonProps {
     isToggleOn: boolean
@@ -41,24 +42,7 @@ export default function ToggleButton({
                 {icon}
             </button>
 
-            {/* Tooltip */}
-            <span
-                role="tooltip"
-                className="
-                    pointer-events-none
-                    absolute left-1/2 top-full z-50
-                    mt-2 -translate-x-1/2
-                    whitespace-nowrap
-                    rounded-md bg-gray-800
-                    px-2 py-1
-                    text-xs font-normal text-white
-                    opacity-0
-                    transition-opacity duration-150
-                    group-hover:opacity-100
-                "
-            >
-                {name}
-            </span>
+            <Tooltip name={name} />
         </div>
     )
 }
